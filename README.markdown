@@ -1,5 +1,13 @@
 # Squeak by Example
 
+_Squeak by Example_ 책을 위한 LaTeX 저장소입니다.
+
+이 책의 공식 웹 사이트는 <http://squeakbyexample.org/> 입니다.
+
+관련 소스 저장소는 모두 <http://github.com/SquareBracketAssociates/> 에 있습니다.
+
+SBE와 관련된 작업할 내용들은 SBE-TODO-ko.txt 를 참고하세요.
+
 This is the LaTeX source repository of the _Squeak by Example_ book.
 
 The public web site of the books is: <http://squeakbyexample.org/>
