@@ -1,0 +1,305 @@
+---------------------------------------------------------------------------
+ERRATA to version 2009-09-29
+---------------------------------------------------------------------------
+none yet ...
+---------------------------------------------------------------------------
+ERRATA to version 2008-05-15
+---------------------------------------------------------------------------
+PENDING:
+section 10.4 (page 228) - What's the difference between fileNamed: and
+ 	oldFileNamed:? The description of oldFileNamed: says "If the file already
+    exists ..." implying that it doesn't have to exist.
+	[on: Good question. I do not immediately see the answer from the source
+	code. Damien, can you help? The descriptions of the two methods do not
+	really make the difference clear.]
+
+---------------------------------------------------------------------------
+section 1.11 (page 27) - "The most important of these are ..."
+	I suggest adding "browse it (CMD-b)".
+	[2008-11-06, Mark Volkmann; fixed -- on]
+
+page 123 on "Browsing programmatically" - "a number of utility method"
+	should be "a number of utility methods".
+	[2008-11-06, Mark Volkmann; fixed -- on]
+
+section 6.5 (page 138) - "Incidentally, if you want to open an full inspector ..."
+	Change "an" to "a".
+	[2008-11-06, Mark Volkmann; fixed -- on]
+
+section 6.9 (page 148) - "general-purpose tool from browsing ..."
+	Change "from" to "for".
+	[2008-11-06, Mark Volkmann; fixed -- on]
+
+section 8.1 (page 182) - In the section on "Debugging", consider adding a
+	footnote reference to the first sentence of the second paragraph.
+	This same paragraph says "Otherwise an exception will be raised."
+	I suggestion specifying which kind is raised.
+	[2008-11-06, Mark Volkmann; added AssertionFailure -- on]
+
+section 9.5 (page 210) - "When the method do: is sent ..."
+	should be "When the message do: is sent ..."
+	[2008-11-06, Mark Volkmann; fixed -- on]
+
+section 10.3 (page 221) - "until it finds an element equals to its parameter"
+	should be "until it finds an element equal to its parameter"
+	[2008-11-06, Mark Volkmann; fixed -- on]
+
+section 10.3 (page 224) - In the code example in the "About Concatenation"
+	section "(ms)" is used in one place and "(milliseconds)" is used in
+	another. Make it consistent.
+	[2008-11-06, Mark Volkmann; fixed -- on]
+
+section 10.4 (page 229) - Explain what kind of file is represented by
+	a file with a .pgm extension.
+	[2008-11-06, Mark Volkmann; fixed -- on]
+
+section 11.5 (page 239) - Change "mouseUp" to "mouseUp:".
+	[2008-11-06, Mark Volkmann; fixed -- on]
+
+FAQ 9 - Clarify that "new methods" means methods that are not only defined
+	by a superclass (can be methods only defined in the current class or
+	methods that the current class overrides).
+	[2008-11-06, Mark Volkmann; fixed -- on]
+
+---------------------------------------------------------------------------
+p 20: Add 'move the cursor to the list and' after 'To scroll to now itself,' 
+        [2008-09-15 Hübner, Uwe; fixed -- dc]
+p 20: Replace 'into the method finder,' by 'into the method finder,
+        and press the RETURN key.'
+	[2008-09-15 Hübner, Uwe; fixed -- dc]
+p 113: The sentence 'If you deselect the currently selected class, so
+         that no class is selected at all, the main browser pane will
+         display a class creation template (Figure 6.4).' should be
+         replaced by 'If you deselect the currently selected category
+         (most left pane) and then re-select it again, the main
+         browser pane will display a class creation template (Figure
+         6.4).'
+	[2008-09-15 Hübner, Uwe; fixed -- dc]
+p 129: The System Browser shown in Figure 6.14 looks different as the
+        default System Browser in the 'Squeak3.9-final-7067.image'
+	[2008-09-15 Hübner, Uwe; fixed -- dc]
+p 226: Wrong code in the book for the stream chapter; the code in the
+        Monticello is correct
+        [2008-08-27 Ian J Cottee; fixed -- dc]
+p x: Wrong capitalization: "An Open Book" instead of "An open book"
+        [2008-08-25; fixed -- dc]
+p 178: Replace "This a method that" by "This is a method that"
+        [2008-08-25; fixed -- dc]
+p 176: End of second paragraph, there is a colon $: instead of a point
+        [2008-08-21; fixed -- dc]
+p 162: two kinds of thing -> two kinds of things [ok as is -- on]
+p 165: for it to be practical to do it once -> 
+	for it to be practical to do once
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 170: all the resource -> all the resources
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 176: simply write -> simply writes
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 177: and this especially true for brace arrays ->
+	and this is especially true for brace arrays
+	examples shows -> examples show
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 178: Method 8.4: -> Method 8.4: Object equality
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 182: in you program -> in your program
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 194: Figure 9.1: The collection classes in Squeak. Indentation indicates
+	subclassing; Italicized classes are abstract. ->
+	-add- Bold classes are described in the "Blue Book".
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 199: they do interpret -> they do, they interpret
+	suggest you to browse -> suggest you browse
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 209: integers or block -> integers or blocks
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 210: gives also access -> also gives access
+	on Number -> in class Number
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 214: is to using xor: -> is to use xor:
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 217: Stream Streams -> Streams
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 221: If you want to go to the beginning or at the end is what you want,
+	you can use reset or setToEnd. ->
+	To position to the beginning of a stream you can use reset.
+	setToEnd positions
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+p 236: through mouse or the keyboard -> through the mouse or the keyboard
+	[Fixed previously by apb]
+p 247: and redefining -> and redefine
+	[Fixed previously by apb]
+p 255: Figure 12.3: The metaclasses of Translucent its superclasses ->
+	Figure 12.3: The metaclasses of Translucent and its superclasses
+	[2008-06-05 Chris Kassopulo; fixed -- on]
+---------------------------------------------------------------------------
+Page 114 slighlty -> slightly
+Page 116 While viewing any one of these method, -> methods
+Page 117 to it as argument, -> to it as an argument,
+Page 103, 123 and 234 Programatically -> Programmatically
+Page 124 accesible -> accessible
+Page 142 the work of a second -> a second of work
+Pages 38 and 150 the the -> the
+Page 157 you or some else -> you or someone else
+      [2008-05-17 Damien Cassou; fixed -- dc]
+---------------------------------------------------------------------------
+ERRATA to version 2008-03-10
+---------------------------------------------------------------------------
+- Updated Chapter 1 text and figures to refer to the new, dedicated
+  Squeak by Example image
+- Added FAQ pointer to SBE image
+- Replace all instances of "red-click" by "click".
+- Fixed figures in Environment chapter and removed reference to squeak-dev
+- Removed references to Supplies Flap in Morphic chapter
+	[2008-05-15 -- on]
+---------------------------------------------------------------------------
+p 226: fix History>>goBackward to avoid using PositionableStream>>back
+which has 2 different meanings between 3.9 and 3.10 (behavior in 3.10
+is better).
+      [2008-05-09 Damien Cassou; fixed -- dc]
+---------------------------------------------------------------------------
+p 144: "where the second argument is a block that simply returns the empty string." -> "... returns the string size."
+- Added FAQ explaining how to change the default browser, with cross references
+  from chapters discussing the browser. -- on
+---------------------------------------------------------------------------
+p 63: "you already feel comfortable with the syntax, you may choose [the -> to] skip this"
+	[2008-04-01 Chris Kassopulo; fixed -- on]
+p 63: "-- is always a binary message ..."
+	[2008-04-01 Chris Kassopulo; rephrased -- on]
+p 64: "The expression Color yellow is [sent -- evaluated] first"
+	[2008-04-01 Chris Kassopulo; fixed -- on]
+---------------------------------------------------------------------------
+p 31: "This template shows us Smalltalk expression" -> 'This template shows us a Smalltalk expression'
+            [2008-03-31 Chris Kassopulo; fixed -- dc]
+p 31: "we passed as argument the" -> "we passed as an argument the"
+            [2008-03-31 Chris Kassopulo; fixed -- dc]
+p 54: second line from the bottom: "super also refers" on a new paragraph
+            [2008-03-31 Chris Kassopulo; fixed -- dc]
+p 58: "which are surround by vertical" -> "which are surrounded by vertical"
+            [2008-03-31 Chris Kassopulo; fixed -- dc]
+p 58:  "The following block refers the variable x" -> "The following block refers to the variable x"
+            [2008-03-31 Chris Kassopulo; fixed -- dc]
+p 184:  standard the behaviour =>  the standard behaviour
+            [2008-03-28 Victor Rodriguez; fixed -- dc]
+p 197: "method provide by" -> "method provided by"
+            [2008-03-28 Victor Rodriguez; fixed -- dc]
+p 272: "How to I search for a class?" -> "How do I ..."
+---------------------------------------------------------------------------
+ERRATA to version 2007-09-13
+---------------------------------------------------------------------------
+PENDING:
+
+p 194: It would be a good idea to include 'ByteString' in figure 9.1
+      since it is mentioned in figure 9.2
+---------------------------------------------------------------------------
+FIXED:
+
+p 4: line 14 from top: 'sources' should be 'changes'.
+	[2007-12-13 Jordi Delgado; fixed -- on]
+
+p 4: the link for downloading squeak-dev has recently moved.
+	[2007-12-08 Doug Edmunds; fixed -- on]
+
+pp 21, 125: "star" should be "asterisk"
+	[2007-12-12 Doug Edmunds; fixed -- on]
+
+p 34: "Type the expression SBCell new and inspect it." should be "SBECell"
+	[2007-10-06 Luca Bettosini; fixed --on]
+
+p 38: "that that" => "that"
+	[2008-01-12 Laurent Sebag; fixed --apb]
+
+p 70: Fig 4.4 caption is from figure 4.3.  It should read:
+	"Binary messages are sent before keyword messages"
+	[2007-10-13 Lea Hänsenberger; fixed --on]
+
+p 84: "For this reason, the browser helps you to browse both class and meta-class
+	as if they were a single thing with two "sides": the "[instance side]" and
+	the "[class side]"
+	[2007-10-11 Mike Roberts; fixed --on]
+
+p 86: "However, any subclass would have its own count variable, so subclass
+	instances would [would] be counted separately."
+	[2007-10-11 Mike Roberts; fixed --on]
+
+p 88: "All that the class can do ..., [which may use --> possibly] using accessors ..."
+	[2007-10-22 Jonathan Hankins; fixed --on]
+
+p 94: "providing setter and getter methods for all the instance variables of an
+	object does is not good object-oriented style" [delete "does"; fixed --on]
+
+p 106: "instances cannot access class variables of their class."
+	should be: "cannot access instance variables"
+	[2007-12-13 Jordi Delgado; fixed -- on]
+
+p 124: line 9 from bottom: "chapter A" -> "FAQ (Appendix A)".
+	[2007-12-13 Jordi Delgado; fixed -- on]
+
+p 126: line 6 from bottom, "those used already" -> "those already"
+	[2007-12-14 Andrew Black; fixed -- apb]
+
+p 135: 2nd para delete "Maybe explain what "self" ......item)  (p. 154)"
+	[2007-09-24 Nick Ager; broken macro -- fixed --on]
+
+p 138: 3rd para "you should fell free" -> "you should feel free"
+	[2007-09-24 Nick Ager; fixed --on]
+
+p 138 "want to want to" -> "want to"
+	[2007-11-05 Andrew Black; fixed --apb]
+
+p 164: First paragraph: "...you will then [then] have to create..."
+	[2007-12-13 Jordi Delgado; fixed -- on]
+
+p 170: Method 7.14: should start 'TestCase class>>testSelectors ...'
+	[2007-12-13 Jordi Delgado; fixed -- on]
+
+p 172 end of first paragraph 'form' should be 'from'.
+	[2007-12-07 Ken G. Brown; fixed --on]
+
+p 186: "All Number objects support various....
+	others which generate Duration s, such as hour..."
+	[2007-10-22 Mike Roberts; fixed --on]
+	
+p 191: `conjuctions' => `conjunctions'
+	[2007-11-08 Has van der Krieken;  fixed --apb]
+	
+p 196: Figure 9.3. In Protocol creation: 
+	with: anElement All: aCollection should be: withAll: aCollection
+	[2007-11-08 Has van der Krieken;  fixed --apb]
+
+p 196: Figure 9.3  In protocol enumerating
+	aNoneBlock should be italicized.
+	[2007-11-12 Andrew Black; fixed -- apb]
+
+p 199: "relize" instead of "realize" at the end of the "Common creation protocol"
+	paragraph.
+	[2007-11-08 Has van der Krieken;  fixed --apb]
+         "behavior" => "behaviour" also fixed here and throughout the book.
+
+p 208: First string test should read "'Hello' isEmpty --> false"
+	[2007-10-21; fixed --on]
+
+p 214: Line 3 from bottom: '..., Dictionary AND its subclasses...'
+	[2007-12-13 Jordi Delgado; fixed -- on]
+
+p 236: Last para "Once the morph handles mouse events, it you cannot grab it"
+	should read: "Once the morph handles mouse events, you cannot grab it"
+	[2007-09-24 Nick Ager; fixed --on]
+
+p 230-247: Rewordings throughout the chapter to correct typos and to make it more
+	consistent in style with the other chapters.  Provided new versions of the
+	CrossMorph methods that work correctly with translucent colors.  better explanation
+	of the roles of the methods involved in drag and drop.  Added periods after all
+	captions (!).
+	[2007-11-05 Andrew Black; fixed --apb]
+
+p 234: Class 11.2 Its category should be 'SBE-Morphs'
+	[2007-12-13 Jordi Delgado; fixed -- apb]
+
+p 236: use colors to refer to mouse buttons, not 'left mouse button'
+	nor 'middle button' nor 'right click'.
+	[2007-12-13 Jordi Delgado; fixed -- apb]
+
+p 269: Smalltalk allClasses select: [:each | each hasTraitComposition]
+	does not work as advertised
+	[2007-09-25 Nick Ager; fixed --on]
+---------------------------------------------------------------------------
