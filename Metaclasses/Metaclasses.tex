@@ -100,66 +100,65 @@
 우리는 먼저, 작은 예시와 함께 \charef{model}에서 다룬 5개의 규칙들을 간략하게 다시 볼 것입니다. 그 다음 우리는 동일한 예시를 사용하여 새로운 규칙들을 면밀히 살펴볼 것입니다. 
 
 %=================================================================
-\section{Revisiting the Smalltalk object model}
+\section{스몰토크 오브젝트 모델을 다시 살펴보기}
 
-Since everything is an object, the color blue in \st is also an object.
+모든 것이 오브젝트 이기 대문에 스몰토크에서 파란색 (blue) 색상 또한 오브젝트 입니다.
 \begin{code}{@TEST}
 Color blue --> Color blue
 \end{code}
 
 \noindent
-Every object is an instance of a class. The class of the color blue is the class \clsind{Color}:
+모든 오브젝트는 클래스의 인스턴스입니다. Color blue의 클래스는 \clsind{Color}입니다. 
 \begin{code}{@TEST}
 Color blue class --> Color
 \end{code}
 
 \noindent
-Interestingly, if we set the \emph{alpha} value of a color, we get an instance of a different class, namely \clsind{TranslucentColor}:
+흥미롭게도, 색상의 알파 값(\emph{alpha})을 설정하면 \clsind{TranslucentColor}라는 다른 종류의 클래스의 인스턴스를 갖게됩니다. 
 \begin{code}{@TEST}
 (Color blue alpha: 0.4) class --> TranslucentColor
 \end{code}
 
 \noindent
-We can create a morph and set its color to this translucent color:
+모프(morph)를 만들고 그 색상을 반투명한 색상(translucent color)으로 설정할 수 있습니다.
 \begin{code}{}
 EllipseMorph new color: (Color blue alpha: 0.4); openInWorld
 \end{code}
 \noindent
-You can see the effect in \figref{translucentEllipse}.
+여러분은 \figref{translucentEllipse}에서 그 효과를 볼 수 있습니다.
 
 \begin{center}
 \begin{figure}[!ht]
 \ifluluelse
 	{\centerline {\includegraphics[scale=0.7]{TranslucentEllipse}}}
 	{\centerline {\includegraphics[width=8cm]{TranslucentEllipse}}}
-\caption{A translucent ellipse\label{fig:translucentEllipse}}
+\caption{반투명한 타원\label{fig:translucentEllipse}}
 \end{figure}
 \end{center}
 
-By \ref{rule:inheritance}, every class has a superclass.
-The superclass of \clsind{TranslucentColor} is \clsind{Color}, and the superclass of \ct{Color} is \clsind{Object}:
+\ref{rule:inheritance}에 의해, 모든 클래스는 superclass를 갖고 있습니다. 
+\clsind{TranslucentColor}의 superclass는 \clsind{Color}이며, \ct{Color}의 superclass는 \clsind{Object}입니다:
 \begin{code}{@TEST}
 TranslucentColor superclass --> Color
 Color superclass                   --> Object
 \end{code}
+모든 것은 메시지 발송(\ind{message send}{})에 의해(\ref{rule:message}) 이루어지므로, \mthind{Color class}{blue}는 \ct{Color}에 대한 메시지 이며, \mthind{Object}{class} 그리고 \mthind{Color}{alpha:}는 color blue에 대한 메시지 이며, \mthind{Morph}{openInWorld}는 타원 모프(ellipse morph)에 대한 메시지고, \mthind{Behavior}{superclass}는 \ct{TranslucentColor}와 \ct{Color}에 대한 메시지인 것을 추론할 수 있습니다. 
+모든 것이 오브젝트이므로 각 사례의 수신자(receiver)는 오브젝트이지만, 동시에 이 오브젝트들의 몇몇은 클래스 이기도합니다.
 
-Everything happens by \ind{message send}{}s (\ref{rule:message}), so we can deduce that \mthind{Color class}{blue} is a message to \ct{Color}, \mthind{Object}{class} and \mthind{Color}{alpha:} are messages to the color blue, \mthind{Morph}{openInWorld} is a message to an ellipse morph, and \mthind{Behavior}{superclass} is a message to \ct{TranslucentColor} and \ct{Color}.
-The receiver in each case is an object, since everything is an object, but some of these objects are also classes.
-
-Method lookup follows the inheritance chain (\ref{rule:lookup}), so when we send the message \ct{class} to the result of \ct{Color blue alpha: 0.4}, the message is handled when the corresponding method is found in the class \ct{Object}, as shown in \figref{classmessage}.
+메소드 보기(Mehod lookup)는 계층도 사슬(the inheritance chain, \ref{rule:lookup})을 따르며, 그러므로, 우리가 메시지 클래스(the message class)를 \ct{Color blue alpha: 0.4}의 결과에 발송하면, \figref{classmessage}에서 보이는 것 처럼, 클래스 오브젝트(the class object)에서 대응 메소드(the corresponding method)가 발견될 때, 메시지가 취급(handle)됩니다. 
 
 \begin{center}
 \begin{figure}[!ht]
 \ifluluelse
 	{\centerline{\includegraphics[width=\textwidth]{TranslucentClassMessage}}}
 	{\centerline{\includegraphics[width=0.8\textwidth]{TranslucentClassMessage}}}
-\caption{Sending a message to a translucent color\label{fig:classmessage}}
+\caption{반투명 색상에 메시지 보내기 \label{fig:classmessage}}
 \end{figure}
 \end{center}
 
-The figure captures the essence of the \emphind{is-a} relationship.
-Our translucent blue object \emph{is a} \ct{TranslucentColor} instance, but we can also say that it \emph{is a} \ct{Color} and that it \emph{is an} \ct{Object}, since it responds to the messages defined in all of these classes.
-In fact, there is a message, \mthind{Object}{isKindOf:}, that you can send to any object to find out if it is in an \emph{is a} relationship with a given class:
+그림은 \emphind{is-a} 관계의 본질을 캡쳐합니다. 우리의 불투명 파랑(blue) 오브젝트는 TranslucentColor 인스턴스이지만, 우리는 또한 그것이 Color 이며, 오브젝트라고 말할 수 있고, 그 이유는 이 불투명 파랑 오브젝트는(blue object) 이 클래스들의 모든 것들에서 정의된 메시지들에 반응하기 때문입니다. 
+사실, \mthind{Object}{isKindOf:} 메시지가 존재하며, 이 isKindOf: 메시지는 여러분이 주어진 클래스와 \emph{is a} 와의 관계 속에 이 isKindOf:가 있는지를 알아내기 위해 어떤 객체라도 발송할 수 있는 메시지입니다:
+
 \begin{code}{@TEST | translucentBlue |}
 translucentBlue := Color blue alpha: 0.4.
 translucentBlue isKindOf: TranslucentColor --> true
