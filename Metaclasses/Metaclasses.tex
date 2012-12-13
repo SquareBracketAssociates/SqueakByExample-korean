@@ -27,78 +27,77 @@
 	\sloppy
 \fi
 %=================================================================
-\chapter{Classes and metaclasses}
+\chapter{클래스와 메타클래스(Classes and metaclasses)}
 \label{cha:metaclasses}
 
 \on{The section on responsibilities of Class, Behavior and Metaclass are weak, and need to be fleshed out with convincing examples. Marcus, can you help?}
 
-As we saw in \charef{model}, in \st, everything is an object, and every object is an instance of a class. Classes are no exception:
-classes are objects, and class objects are instances of other classes.
-This object model captures the essence of object-oriented programming: it is lean, simple, elegant and uniform. 
-However, the implications of this uniformity may confuse newcomers. The goal of this chapter is to show that there is nothing complex, ``magic'' or special here: just simple rules applied uniformly.
-By following these rules you can always understand why the situation is the way that it is.
+우리가 \charef{model}에서 보았듯이, \st에서는 모든 것이 오브젝트이며 모든 오브젝트는 클래스의 인스턴스입니다. 
+클래스라고 예외는 아닙니다. 클래스도 오브젝트이며, 클래스 오브젝트는 다른 클래스의 인스턴스 입니다. 오브젝트 모델은 객체 지향 프로그래밍(object-oriented programming)의 정수를 캡쳐합니다: 이 모델은 군살이 없고 탄탄하며, 단순하고, 우아하며, 균일합니다. 
+그럼에도 불구하고 이 균일성(uniformity)의 함의는 초보자에게 혼란을 줄 수 있습니다. 이 장의 목적은 ``매직(magic)''또는 여기서의 특별함(special)에 어떤 복잡한 것이 없다는 것을 보여드리는 일에 있습니다: 단지 단순한 규칙들이 일정하게 적용되었습니다. 
+여러분은 이 규칙들을 따름으로써, 상황이 왜 그 방식으로 이루어졌는지를 항상 이해하실 수 있을 것입니다. 
 
 %=================================================================
-\section{Rules for classes and metaclasses}
+\section{클래스(class)와 메타클래스(metaclass)의 규칙들}
 
-The Smalltalk object model is based on a limited number of concepts applied uniformly. 
-Smalltalk's designers applied Occam's razor: any consideration leading to a model more complex than necessary was discarded.
+스몰토크 오브젝트 모델은 일정하게 적용된 제한된 수의 개념들에 기초합니다. 
+스몰토크의 디자이너들은 Occam의 razor를 적용하였습니다: 필요한 것보다 좀더 복잡한 모델로 이끄는 모든 고려사항들은 폐기됩니다. 
 
-To refresh your memory, here are the rules of the object model that we explored in \charef{model}.
+여러분의 기억을 상기시켜드리기 위해, 우리가 \charef{model}에서 살펴본 오브젝트 모델들의 규칙들을 다음과 같이 기록하였습니다.  
 
 \begin{enumerate}[label={\textbf{Rule \arabic{*}}.}, ref={Rule \arabic{*}}, leftmargin=*, widest=10]
 % NB: rule labels must not be multiply defined across chapters!
 \item{} % \label{rule:everything}
-	Everything is an object.
+    모든 것은 오브젝트이다.
 
 \item{} % \label{rule:instance}
-	Every object is an instance of a class.
+    모든 오브젝트는 클래스의 인스턴스 이다.
 
 \item{} % \label{rule:inheritance}
-	Every class has a superclass.
+    모든 클래스는 수퍼클래스를 갖고 있다.
 
 \item{} % \label{rule:message}
-	Everything happens by message sends.
+    모든 것은 메시지 발송에 의해 이루어 진다.
 
 \item{} % \label{rule:lookup}
-	Method lookup follows the inheritance chain.
+    메소드 검색(Method lookup)은 계층도 사슬(inheritance chanin)을 따른다.
 
 \end{enumerate}
 
-As we mentioned in the introduction to this chapter, a consequence of \ref{rule:everything} is that \emph{classes are objects too}, so \ref{rule:instance} tells us that classes must also be instances of classes.
-The class of a class is called a \emph{metaclass}.
-\label{sec:metaclassIntro}
-A \indmain{metaclass} is created automatically for you whenever you create a class.
-Most of the time you do not need to care or think about metaclasses.
-However, every time that you use the system browser to browse the ``\subind{system browser}{class side}'' of a class, it is helpful to recall that you are actually browsing a different class.
-A class and its metaclass are two separate classes, even though the former is an instance of the latter. 
+우리가 이 장의 도입 부분에 언급하였듯이 \ref{rule:everything}의 결과는 \emph{클래스 또한 오브젝트라는 것}이므로, \ref{rule:instance}는 우리에게 클래스가 반드시 클래스의 인스턴스가 되어야 한다고 말합니다. 
+클래스의 클래스는 \emph{메타클래스(metaclass)}로 불립니다. 
+\lable{sec:metaclassIntro}
+\indmain{메타클래스}는 여러분이 클래스를 만들 때마다 여러분 자신을 위해 자동으로 만들어집니다. 
+여러분은 대부분의 경우 메타클래스에 대해 신경을 쓸 필요가 없습니다. 
+그럼에도 불구하고, 클래스의 ``class side''를 검색하기 위해 시스템 브라우저(system browser)를 사용할 때마다, 여러분이 실제로 다른 클래스(different class)를 검색하고 있으시다는 것을 상기하는 것이 도움이 됩니다. 
+클래스와 그것의 메타클래스는, 비록 전자가 후자의 인스턴스임에도 불구하고 두 개의 분리된 클래스입니다.
 
-To properly explain classes and metaclasses, we need to extend the rules from \charef{model} with the following additional rules.
+클래스와 메타클래스를 적합하게 설명하기 위해, 우리는 \charef{model}에 나온 규칙들을 다음 추가 규칙들로 확장할 필요가 있습니다.
 
 \begin{enumerate}[label={\textbf{Rule \arabic{*}}.}, ref={Rule \arabic{*}}, leftmargin=*, widest=10]
 \setcounter{enumi}{5}
 \item{} \label{rule:metaclass}
-	Every class is an instance of a metaclass.
+    모든 클래스는 메타클래스의 인스턴스이다.
 
 \item{} \label{rule:parallelhierarchy}
-	The metaclass \subind{metaclass}{hierarchy} parallels the class hierarchy.
+    메타클래스 계층도(\subind{metaclass}{hierarchy})는 클래스 계층도와 평행을 이룬다.
 
 \item{} \label{rule:behavior}
-	Every metaclass inherits from \clsind{Class} and \clsind{Behavior}.
+    모든 메타클래스는 \clsind{Class}와 \clsind{Behavior}를 상속한다.
 
 \item{} \label{rule:metaclassclass}
-	Every metaclass is an instance of \clsind{Metaclass}.
+    모든 메타클래스는 \clsind{Metaclass}의 인스턴스이다.
 
 \item{} \label{rule:metaclassmetaclass}
 	The metaclass of \ct{Metaclass} is an instance of \ct{Metaclass}.
+    \ct{Metaclass}의 메타클래스는\ct{Metaclass}의 인스턴스이다.
 
 \end{enumerate}
 
 \noindent
-Together, these 10 rules complete \st's object model.
+이 10개의 규칙들은 함께 스몰토크의 오브젝트 모델을 완성합니다.
 
-We will first briefly revisit the 5 rules from \charef{model} with a small example.
-Then we will take a closer look at the new rules, using the same example.
+우리는 먼저, 작은 예시와 함께 \charef{model}에서 다룬 5개의 규칙들을 간략하게 다시 볼 것입니다. 그 다음 우리는 동일한 예시를 사용하여 새로운 규칙들을 면밀히 살펴볼 것입니다. 
 
 %=================================================================
 \section{Revisiting the Smalltalk object model}
